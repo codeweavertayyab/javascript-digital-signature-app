@@ -1,5 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Birthstone&family=Dancing+Script:wght@400..700&family=Julius+Sans+One&family=Marck+Script&family=Playwrite+IS:wght@100..400&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Birthstone&family=Dancing+Script:wght@400..700&family=Julius+Sans+One&family=Marck+Script&family=Playwrite+IS:wght@100..400&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 * {
   margin: 0;
@@ -9,59 +8,58 @@
 }
 
 body {
-  background: linear-gradient(146deg, #ff0000, #003eff, #ff0000);
-  background-size: 180% 180%;
-  animation: gradient-animation 18s ease infinite;
-}
-
-@keyframes gradient-animation {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+  background-color: #003eff;
 }
 
 .container {
   height: 100vh;
-  width: 100%;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   padding: 20px;
 }
 
-.container h1 {
+
+
+.headings h1 {
   color: white;
-  font-size: 5vw; 
+  font-size: 4vw;
+}
+
+.headings h3 {
+  color: white;
+  font-size: 2vw;
   font-weight: normal;
-  font-family: "Birthstone", cursive;
-  text-align: center;
-  margin-bottom: 20px;
+}
+
+.canvascontainer {
+  width: 100%;
+  max-width: 500px; /* Adjust maximum width as needed */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 canvas {
   width: 100%;
-  max-width: 500px;
   height: auto;
+  max-width: 100%; /* Ensure canvas is responsive */
+  aspect-ratio: 1/1; /* Maintain square aspect ratio */
   background-color: rgba(255, 255, 255, 0.371);
   border: 1px solid black;
   border-radius: 16px;
   touch-action: none;
-  margin: 10px;
+  margin: 5px;
   backdrop-filter: blur(10px);
 }
 
 .controls {
   width: 100%;
-  max-width: 270px;
+  max-width: 270px; /* Adjust maximum width as needed */
   display: flex;
   justify-content: space-around;
+  margin-top: 10px;
 }
 
 .btn {
@@ -88,10 +86,36 @@ canvas {
   box-shadow: none;
   transform: none;
 }
-
+@media (max-width: 1024px) {
+  .container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  .headings{
+    text-align: center;
+  }
+}
 @media (max-width: 768px) {
   .btn {
     height: 40px;
     width: 100px;
+    font-size: 10px;
+  }
+
+  .controls {
+    max-width: 220px; 
+  }
+}
+@media (max-width: 426px) {
+  .headings h1{
+    font-size: 7vw;
+  }
+  .headings h3{
+    font-size: 3vw;
+
   }
 }
