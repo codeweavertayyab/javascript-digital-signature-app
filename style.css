@@ -19,8 +19,6 @@ body {
   padding: 20px;
 }
 
-
-
 .headings h1 {
   color: white;
   font-size: 4vw;
@@ -34,7 +32,7 @@ body {
 
 .canvascontainer {
   width: 100%;
-  max-width: 500px; 
+  max-width: 500px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -44,8 +42,8 @@ body {
 canvas {
   width: 100%;
   height: auto;
-  max-width: 100%; 
-  aspect-ratio: 1/1; 
+  max-width: 100%;
+  aspect-ratio: 1/1;
   background-color: rgba(255, 255, 255, 0.371);
   border: 1px solid black;
   border-radius: 16px;
@@ -95,7 +93,7 @@ canvas {
     align-items: center;
     padding: 20px;
   }
-  .headings{
+  .headings {
     text-align: center;
   }
 }
@@ -107,15 +105,14 @@ canvas {
   }
 
   .controls {
-    max-width: 220px; 
+    max-width: 220px;
   }
 }
 @media (max-width: 426px) {
-  .headings h1{
+  .headings h1 {
     font-size: 7vw;
   }
-  .headings h3{
+  .headings h3 {
     font-size: 3vw;
-
   }
 }
