@@ -5,16 +5,27 @@ document.addEventListener("DOMContentLoaded", () => {
   const clearBtn = document.querySelector(".clearbtn");
 
   ctx.lineWidth = 4;
-  ctx.lineJoin = "round";
-  ctx.lineCap = "round";
+  ctx.lineJoin = 'round';
+  ctx.lineCap = 'round';
 
   let drawing = false;
+  let isCanvasEmpty = true;
+
+  const enableButtons = () => {
+    downloadBtn.disabled = false;
+    clearBtn.disabled = false;
+  };
+
+  const disableButtons = () => {
+    downloadBtn.disabled = true;
+    clearBtn.disabled = true;
+  };
 
   const getMousePos = (canvas, evt) => {
     const rect = canvas.getBoundingClientRect();
     return {
       x: evt.clientX - rect.left,
-      y: evt.clientY - rect.top,
+      y: evt.clientY - rect.top
     };
   };
 
@@ -22,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const rect = canvas.getBoundingClientRect();
     return {
       x: touch.clientX - rect.left,
-      y: touch.clientY - rect.top,
+      y: touch.clientY - rect.top
     };
   };
 
@@ -31,6 +42,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const pos = getMousePos(canvas, e);
     ctx.beginPath();
     ctx.moveTo(pos.x, pos.y);
+    if (isCanvasEmpty) {
+      enableButtons();
+      isCanvasEmpty = false;
+    }
   };
 
   const draw = (e) => {
@@ -47,6 +62,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const clearCanvas = () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    disableButtons();
+    isCanvasEmpty = true;
   };
 
   const downloadSignature = () => {
@@ -54,6 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
     link.download = "signature.png";
     link.href = canvas.toDataURL();
     link.click();
+    clearCanvas();
   };
 
   canvas.addEventListener("mousedown", startDrawing);
@@ -74,3 +92,4 @@ document.addEventListener("DOMContentLoaded", () => {
   downloadBtn.addEventListener("click", downloadSignature);
   clearBtn.addEventListener("click", clearCanvas);
 });
+
