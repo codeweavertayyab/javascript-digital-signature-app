@@ -4,9 +4,19 @@ document.addEventListener("DOMContentLoaded", () => {
   const downloadBtn = document.querySelector(".downloadbtn");
   const clearBtn = document.querySelector(".clearbtn");
 
+  const resizeCanvas = () => {
+    const { width, height } = canvas.getBoundingClientRect();
+    canvas.width = width;
+    canvas.height = height;
+  };
+
+  resizeCanvas();
+
+  window.addEventListener("resize", resizeCanvas);
+
   ctx.lineWidth = 4;
-  ctx.lineJoin = 'round';
-  ctx.lineCap = 'round';
+  ctx.lineJoin = "round";
+  ctx.lineCap = "round";
 
   let drawing = false;
   let isCanvasEmpty = true;
@@ -25,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const rect = canvas.getBoundingClientRect();
     return {
       x: evt.clientX - rect.left,
-      y: evt.clientY - rect.top
+      y: evt.clientY - rect.top,
     };
   };
 
@@ -33,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const rect = canvas.getBoundingClientRect();
     return {
       x: touch.clientX - rect.left,
-      y: touch.clientY - rect.top
+      y: touch.clientY - rect.top,
     };
   };
 
@@ -92,4 +102,3 @@ document.addEventListener("DOMContentLoaded", () => {
   downloadBtn.addEventListener("click", downloadSignature);
   clearBtn.addEventListener("click", clearCanvas);
 });
-
